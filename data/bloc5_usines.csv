@@ -1,0 +1,6 @@
+factory_id,factory_name,country,city,machine_count
+1,Usine Lyon,France,Lyon,20
+2,Usine Lille,France,Lille,18
+3,Usine Toulouse,France,Toulouse,22
+4,Usine Hamburg,Germany,Hamburg,25
+5,Usine Turin,Italy,Turin,19

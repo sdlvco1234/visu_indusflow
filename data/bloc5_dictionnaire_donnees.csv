@@ -1,0 +1,17 @@
+file,column,description
+bloc5_clients_industriels.csv,client_id,Identifiant client
+bloc5_clients_industriels.csv,sector,Secteur d’activité du client
+bloc5_usines.csv,factory_id,Identifiant usine
+bloc5_usines.csv,machine_count,Nombre de machines dans l’usine
+bloc5_production_mensuelle.csv,production_cycles,Nombre de cycles de production réalisés
+bloc5_production_mensuelle.csv,target_cycles,Objectif mensuel de production
+bloc5_production_mensuelle.csv,downtime_hours,Nombre d’heures d’arrêt de production
+bloc5_production_mensuelle.csv,oee,Efficacité globale des équipements
+bloc5_maintenance_mensuelle.csv,preventive_maintenance_count,Nombre de maintenances préventives
+bloc5_maintenance_mensuelle.csv,corrective_maintenance_count,Nombre de maintenances correctives
+bloc5_maintenance_mensuelle.csv,maintenance_cost_eur,Coût total de maintenance
+bloc5_qualite_mensuelle.csv,defect_rate,Taux de défaut qualité
+bloc5_stock_pieces_detachees.csv,stock_qty,Stock disponible
+bloc5_ventes_contrats.csv,revenue_eur,Chiffre d’affaires
+bloc5_benchmark_industriel_externe.csv,sector_avg_oee,OEE moyen du secteur par pays
+bloc5_prix_energie_marche.csv,energy_price_eur_kwh,Prix moyen de l’énergie par pays et par mois

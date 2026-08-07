@@ -1,0 +1,196 @@
+{
+  "generated_at": "2026-08-07T14:58:41",
+  "summary": {
+    "total_tables": 9,
+    "valid_tables": 1,
+    "invalid_tables": 8,
+    "all_valid": false
+  },
+  "valid_tables": [
+    "bloc5_benchmark_industriel_externe"
+  ],
+  "invalid_tables": [
+    "bloc5_usines",
+    "bloc5_produits",
+    "bloc5_prix_energie_marche",
+    "bloc5_stock_pieces_detachees",
+    "bloc5_qualite_mensuelle",
+    "bloc5_maintenance_mensuelle",
+    "bloc5_ventes_contrats",
+    "bloc5_clients_industriels"
+  ],
+  "tables": {
+    "bloc5_usines": {
+      "table": "bloc5_usines",
+      "valid": false,
+      "status": "SCHEMA_ERROR",
+      "rows": null,
+      "columns_count": null,
+      "columns": [],
+      "errors": [
+        {
+          "schema_context": "Column",
+          "column": "factory_id",
+          "check": "dtype('string[python]')",
+          "failure_case": "int64",
+          "index": null
+        }
+      ]
+    },
+    "bloc5_produits": {
+      "table": "bloc5_produits",
+      "valid": false,
+      "status": "SCHEMA_ERROR",
+      "rows": null,
+      "columns_count": null,
+      "columns": [],
+      "errors": [
+        {
+          "schema_context": "Column",
+          "column": "product_id",
+          "check": "dtype('string[python]')",
+          "failure_case": "int64",
+          "index": null
+        }
+      ]
+    },
+    "bloc5_prix_energie_marche": {
+      "table": "bloc5_prix_energie_marche",
+      "valid": false,
+      "status": "SCHEMA_ERROR",
+      "rows": null,
+      "columns_count": null,
+      "columns": [],
+      "errors": [
+        {
+          "schema_context": "Column",
+          "column": "month",
+          "check": "dtype('datetime64[ns]')",
+          "failure_case": "str",
+          "index": null
+        }
+      ]
+    },
+    "bloc5_stock_pieces_detachees": {
+      "table": "bloc5_stock_pieces_detachees",
+      "valid": false,
+      "status": "SCHEMA_ERROR",
+      "rows": null,
+      "columns_count": null,
+      "columns": [],
+      "errors": [
+        {
+          "schema_context": "Column",
+          "column": "part_id",
+          "check": "dtype('string[python]')",
+          "failure_case": "int64",
+          "index": null
+        },
+        {
+          "schema_context": "Column",
+          "column": "factory_id",
+          "check": "dtype('string[python]')",
+          "failure_case": "int64",
+          "index": null
+        }
+      ]
+    },
+    "bloc5_qualite_mensuelle": {
+      "table": "bloc5_qualite_mensuelle",
+      "valid": false,
+      "status": "SCHEMA_ERROR",
+      "rows": null,
+      "columns_count": null,
+      "columns": [],
+      "errors": [
+        {
+          "schema_context": "DataFrameSchema",
+          "column": null,
+          "check": "defect_rate ne correspond pas à defect_count / inspected_units",
+          "failure_case": false,
+          "index": null
+        },
+        {
+          "schema_context": "Column",
+          "column": "factory_id",
+          "check": "dtype('string[python]')",
+          "failure_case": "int64",
+          "index": null
+        }
+      ]
+    },
+    "bloc5_maintenance_mensuelle": {
+      "table": "bloc5_maintenance_mensuelle",
+      "valid": false,
+      "status": "SCHEMA_ERROR",
+      "rows": null,
+      "columns_count": null,
+      "columns": [],
+      "errors": [
+        {
+          "schema_context": "Column",
+          "column": "factory_id",
+          "check": "dtype('string[python]')",
+          "failure_case": "int64",
+          "index": null
+        }
+      ]
+    },
+    "bloc5_benchmark_industriel_externe": {
+      "table": "bloc5_benchmark_industriel_externe",
+      "valid": true,
+      "status": "OK",
+      "rows": 4,
+      "columns_count": 5,
+      "columns": [
+        "country",
+        "sector_avg_oee",
+        "sector_avg_defect_rate",
+        "sector_avg_monthly_maintenance_cost_eur",
+        "sector_avg_mttr_hours"
+      ],
+      "errors": []
+    },
+    "bloc5_ventes_contrats": {
+      "table": "bloc5_ventes_contrats",
+      "valid": false,
+      "status": "SCHEMA_ERROR",
+      "rows": null,
+      "columns_count": null,
+      "columns": [],
+      "errors": [
+        {
+          "schema_context": "Column",
+          "column": "client_id",
+          "check": "dtype('string[python]')",
+          "failure_case": "int64",
+          "index": null
+        },
+        {
+          "schema_context": "Column",
+          "column": "product_id",
+          "check": "dtype('string[python]')",
+          "failure_case": "int64",
+          "index": null
+        }
+      ]
+    },
+    "bloc5_clients_industriels": {
+      "table": "bloc5_clients_industriels",
+      "valid": false,
+      "status": "SCHEMA_ERROR",
+      "rows": null,
+      "columns_count": null,
+      "columns": [],
+      "errors": [
+        {
+          "schema_context": "Column",
+          "column": "client_id",
+          "check": "dtype('string[python]')",
+          "failure_case": "int64",
+          "index": null
+        }
+      ]
+    }
+  }
+}

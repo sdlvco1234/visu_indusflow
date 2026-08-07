@@ -1,0 +1,7 @@
+product_id,product_name,category,unit_cost_eur
+1,Servo moteur industriel,Mechanical,420
+2,Carte de contrôle,Electronic,180
+3,Pompe hydraulique,Hydraulic,360
+4,Module capteur,Electronic,95
+5,Vanne haute pression,Hydraulic,240
+6,Réducteur mécanique,Mechanical,310
