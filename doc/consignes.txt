@@ -1,0 +1,91 @@
+Consignes : 
+
+Mise en situation 1
+Mise en place du cycle de l’information nécessaire à la création d’outils de pilotage...
+
+Le candidat présente :
+Son analyse des besoins ;
+Les résultats de son travail de collecte ;
+Le stockage ;
+L’extraction ;
+Le nettoyage des données.
+
+
+Mise en situation 2
+Création et présentation des outils de pilotage, analyse et préconisations...
+
+Le candidat présente :
+Ses outils de pilotage ;
+Ses indicateurs ;
+Son analyse ;
+Ses préconisations.
+Il justifie ses choix par rapport aux besoins du client.
+
+Travail attendu
+1. Formaliser les besoins des décideurs en matière de pilotage d’activité.
+2. Identifier les données internes et externes utiles à l’analyse.
+3. Collecter et stocker les données dans une logique sécurisée et exploitable.
+4. Extraire, nettoyer et préparer les données nécessaires aux tableaux de bord.
+5. Créer un outil de pilotage accessible avec des indicateurs clés pertinents.
+6. Présenter les tableaux de bord et expliquer les indicateurs choisis.
+7. Produire une analyse claire des résultats observés.
+8. Présenter et défendre des recommandations permettant d’améliorer l’activité.
+9. Identifier de nouvelles opportunités opérationnelles ou commerciales à partir des données.
+
+
+Indicateurs attendus
+• Performance industrielle : volumes de production, cycles, retards, utilisation des usines.
+• Maintenance : nombre d’incidents, coût de maintenance, part corrective/préventive, machines
+critiques.
+• Qualité : taux de défauts, défauts par machine, défauts par produit.
+• Stocks : pièces sous seuil, risque de rupture, coût de stock immobilisé.
+• Business : clients ou secteurs les plus actifs, opportunités de services ou d’optimisation.
+
+
+Rendus : 
+	Supports écrits : 
+	Une note ou un support synthétique présentant l’analyse du besoin et les données utilisées.
+	Un modèle de données ou une description claire des tables retenues et de leurs relations.
+	Un bilan critique personnel sur les limites de l’analyse et les pistes d’amélioration.
+
+
+	Supports réels : 
+	Un tableau de bord fonctionnel ou une maquette exploitable.
+	
+	Support oral : 
+	Une présentation orale des indicateurs, analyses et recommandations.
+	
+	
+Référentiel RNCP : 
+
+1 - Formaliser le besoin exprimé par le client en
+termes de pilotage d'activité et identifier les
+données à exploiter (internes et externes), (support 1)
+2 - Collecter et stocker, dans des conditions
+sécurisées, les données qui seront exploitées
+pour piloter l’activité, (solution dashboard) 
+3 - Extraire et nettoyer les données nécessaires
+au pilotage de l’activité du client (solution dashboard)
+
+
+1 - Créer les outils de pilotage accessibles
+correspondant aux besoins du client et identifier
+les indicateurs clés, (support 1)
+2 - Présenter de façon accessible les outils de
+pilotage et les indicateurs clés identifiés (support 1)
+
+
+3 - Produire une analyse des informations issues
+des outils de pilotage et en tirer des
+préconisations en termes de prise de décision,
+
+4 - Identifier et présenter à partir des outils de
+pilotage de nouvelles opportunités d’activités
+
+
+Le candidat présente :
+
+Ses outils de pilotage, ses indicateurs, son
+analyse et ses préconisations à un jury de deux
+personnes représentant le client. Il justifie ses
+choix par rapport aux besoins du client.
