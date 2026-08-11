@@ -1,0 +1,45 @@
+credentials:
+  usernames:
+    isabelle.moreau:
+      email: isabelle.moreau@indusflow.fr
+      name: Isabelle Moreau
+      role: dg
+      password: $2b$12$pprNO5kNy.aRPB8/SHJSQOl2tBdg9DvYrEv7X6nsREzPgGEdIdguO
+
+    thomas.lefevre:
+      email: thomas.lefevre@indusflow.fr
+      name: Thomas Lefèvre
+      role: resp_usine
+      password: $2b$12$bIQi0nc17fR06a2F/7tOPu5O1gJi...U40VRQs4lamf4ik5CW79Gm
+
+    sarah.benali:
+      email: sarah.benali@indusflow.fr
+      name: Sarah Benali
+      role: maintenance
+      password: $2b$12$ebOnh07XvbGAA0xbKy/DGOUkO62nv5iXm42denbYP.5FlFvhGr2RG
+
+    marc.dupuis:
+      email: marc.dupuis@indusflow.fr
+      name: Marc Dupuis
+      role: daf
+      password: $2b$12$p.D4F6akztlPT5RDWBtf3erUk4UZry9VBqZjBOyfCfB2DV85H/IrG
+
+    lea.girard:
+      email: lea.girard@indusflow.fr
+      name: Léa Girard
+      role: commercial
+      password: $2b$12$0eHWEuKg9zh2GENgwxKuI.21ji7eqhk0/aeI33i4pW/Z9BxmSIru6
+    
+    corentin.vanlandeghem:
+      email: corentin.van-landeghem@indusflow.commercial
+      name: Corentin Van Landeghem
+      role : dg
+      password: azerty
+
+cookie:
+  name: indusflow_auth_cookie
+  key: CHANGE_MOI_avec_une_chaine_aleatoire_longue
+  expiry_days: 7
+
+preauthorized:
+  emails: []
