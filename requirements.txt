@@ -7,3 +7,4 @@ streamlit-authenticator==0.4.2
 nbformat==5.10.4
 sqlalchemy==2.0.38
 pysqlcipher3==1.2.0
+python-dotenv
