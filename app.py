@@ -14,8 +14,11 @@ from dotenv import load_dotenv
 load_dotenv(".env")
 SOURCE_DB = "data/base.db"
 ENCRYPTED_DB = "data/database_encrypted.sqlite"
+KEY = st.secrets["SECRET_KEY"]
 
-KEY = os.environ.get("SECRET_KEY")
+if not KEY:
+    KEY = os.environ.get("SECRET_KEY")
+    
 
 
 conn = sqlite.connect(ENCRYPTED_DB)
