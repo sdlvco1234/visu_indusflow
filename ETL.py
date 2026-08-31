@@ -2,8 +2,13 @@ import pandas as pd
 import plotly.express as px
 from sqlalchemy import create_engine
 from pathlib import Path
+import os
 
-import pandas as pd
+from dotenv import load_dotenv
+from sqlalchemy import create_engine
+from sqlalchemy.pool import StaticPool
+from pysqlcipher3 import dbapi2 as sqlite
+
 import ipywidgets as widgets
 from IPython.display import display, clear_output
 from datetime import datetime, timezone
@@ -72,22 +77,44 @@ maintenance["corrective_cost"] = maintenance["corrective_maintenance_count"] * m
 
 # Import base bronze 
 
+load_dotenv(".env")
 
-engine = create_engine("sqlite:///data/base.db")
 
-usines.to_sql("bronze_usine", con=engine, if_exists="append",index=False)
-production.to_sql("bronze_production", con=engine, if_exists="append",index=False)
-prix_ener.to_sql("bronze_prix_ener", con=engine, if_exists="append",index=False)
-stock_pieces.to_sql("bronze_stock_pieces", con=engine, if_exists="append",index=False)
-qualitee.to_sql("bronze_qualitee", con=engine, if_exists="append",index=False)
-maintenance.to_sql("bronze_maintenance", con=engine, if_exists="append",index=False)
-benchmark.to_sql("bronze_benchmark", con=engine, if_exists="append",index=False)
-ventes.to_sql("bronze_ventes", con=engine, if_exists="append",index=False)
-produit.to_sql("bronze_produit", con=engine, if_exists="append",index=False)
-client.to_sql("bronze_client", con=engine, if_exists="append",index=False)
-camera.to_sql("bronze_camera", con=engine, if_exists="append",index=False)
-capteurs.to_sql("bronze_capteurs", con=engine, if_exists="append",index=False)
-logs.to_sql("bronze_logs", con=engine, if_exists="append",index=False)
+
+ENCRYPTED_DB = "data/database_encrypted.sqlite"
+
+KEY = os.environ.get("SECRET_KEY")
+
+def get_db_connection():
+    conn = sqlite.connect(ENCRYPTED_DB)
+
+    conn.execute(
+        f"PRAGMA key ='{KEY}'"
+    )
+
+    return conn
+
+conn = get_db_connection()
+
+# engine = create_engine(
+#     "sqlite://",
+#     creator=get_connection,
+#     poolclass=StaticPool,
+# )
+
+usines.to_sql("bronze_usine", con=conn, if_exists="append",index=False)
+production.to_sql("bronze_production", con=conn, if_exists="append",index=False)
+prix_ener.to_sql("bronze_prix_ener", con=conn, if_exists="append",index=False)
+stock_pieces.to_sql("bronze_stock_pieces", con=conn, if_exists="append",index=False)
+qualitee.to_sql("bronze_qualitee", con=conn, if_exists="append",index=False)
+maintenance.to_sql("bronze_maintenance", con=conn, if_exists="append",index=False)
+benchmark.to_sql("bronze_benchmark", con=conn, if_exists="append",index=False)
+ventes.to_sql("bronze_ventes", con=conn, if_exists="append",index=False)
+produit.to_sql("bronze_produit", con=conn, if_exists="append",index=False)
+client.to_sql("bronze_client", con=conn, if_exists="append",index=False)
+camera.to_sql("bronze_camera", con=conn, if_exists="append",index=False)
+capteurs.to_sql("bronze_capteurs", con=conn, if_exists="append",index=False)
+logs.to_sql("bronze_logs", con=conn, if_exists="append",index=False)
 
 # Transformation 
 ## CA & rentabilité
@@ -270,13 +297,13 @@ monthly_mttr["manque_panne"]= monthly_mttr["avg_revenue_hour"] * monthly_mttr["m
 # Connexion SQLite
 # -------------------------------------------------------------------
 
-DB_PATH = Path("data/base.db")
-DB_PATH.parent.mkdir(parents=True, exist_ok=True)
+# DB_PATH = Path("data/base.db")
+# DB_PATH.parent.mkdir(parents=True, exist_ok=True)
 
-engine = create_engine(
-    f"sqlite:///{DB_PATH}",
-    future=True
-)
+# engine = create_engine(
+#     f"sqlite:///{DB_PATH}",
+#     future=True
+# )
 
 
 # -------------------------------------------------------------------
@@ -343,13 +370,18 @@ def to_dataframe(obj, object_name):
 # Insertion des objets en Silver
 # -------------------------------------------------------------------
 
+
+# Insertion des objets en Silver
+# -------------------------------------------------------------------
+
 ingestion_timestamp = datetime.now(
     timezone.utc
 ).isoformat()
 
 results = []
 
-with engine.begin() as connection:
+try:
+
     for table_name, obj in silver_objects.items():
 
         df_silver = to_dataframe(
@@ -372,7 +404,7 @@ with engine.begin() as connection:
         # Import de la table Silver
         df_silver.to_sql(
             name=table_name,
-            con=connection,
+            con=conn,
             if_exists="replace",
             index=False,
             chunksize=1_000,
@@ -385,6 +417,65 @@ with engine.begin() as connection:
             "columns": len(df_silver.columns),
             "status": "OK"
         })
+
+    # Validation de toutes les opérations
+    conn.commit()
+
+except Exception as e:
+
+    # Annulation des opérations en cas d'erreur
+    conn.rollback()
+
+    raise
+
+finally:
+
+    # Fermeture de la connexion SQLCipher
+    conn.close()
+
+
+# ingestion_timestamp = datetime.now(
+#     timezone.utc
+# ).isoformat()
+
+# results = []
+
+# with conn.begin() as connection:
+#     for table_name, obj in silver_objects.items():
+
+#         df_silver = to_dataframe(
+#             obj=obj,
+#             object_name=table_name
+#         )
+
+#         # Évite les problèmes liés à un index pandas non unique
+#         df_silver = df_silver.reset_index(drop=True)
+
+#         # Nettoyage minimal des noms de colonnes
+#         df_silver.columns = [
+#             str(column).strip()
+#             for column in df_silver.columns
+#         ]
+
+#         # Métadonnée de traçabilité
+#         df_silver["_silver_load_timestamp_utc"] = ingestion_timestamp
+
+#         # Import de la table Silver
+#         df_silver.to_sql(
+#             name=table_name,
+#             con=connection,
+#             if_exists="replace",
+#             index=False,
+#             chunksize=1_000,
+#             method="multi"
+#         )
+
+#         results.append({
+#             "table": table_name,
+#             "rows": len(df_silver),
+#             "columns": len(df_silver.columns),
+#             "status": "OK"
+#         })
 
 
 # -------------------------------------------------------------------
