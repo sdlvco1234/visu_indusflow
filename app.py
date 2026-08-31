@@ -9,10 +9,10 @@ from sqlalchemy import create_engine
 import sqlite3
 # from pysqlcipher3 import dbapi2 as sqlite
 import os
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 
 
-load_dotenv(".env")
+# load_dotenv(".env")
 SOURCE_DB = "data/base.db"
 ENCRYPTED_DB = "data/database_encrypted.sqlite"
 # KEY = st.secrets["SECRET_KEY"]
