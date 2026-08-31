@@ -6,7 +6,8 @@ import streamlit_authenticator as stauth
 import yaml
 from yaml.loader import SafeLoader
 from sqlalchemy import create_engine
-from pysqlcipher3 import dbapi2 as sqlite
+import sqlite3
+# from pysqlcipher3 import dbapi2 as sqlite
 import os
 from dotenv import load_dotenv
 
@@ -17,14 +18,14 @@ ENCRYPTED_DB = "data/database_encrypted.sqlite"
 KEY = st.secrets["SECRET_KEY"]
 
 KEY = os.environ.get("SECRET_KEY")
-conn = sqlite.connect(SOURCE_DB)
+conn = sqlite3.connect(SOURCE_DB)
 
 # conn = sqlite.connect(ENCRYPTED_DB)
 
 
-conn.execute(
-    f"PRAGMA key ='{KEY}'"
-)
+# conn.execute(
+#     f"PRAGMA key ='{KEY}'"
+# )
 
 # ----------------------------------------------------------------------------
 # Configuration générale de la page
